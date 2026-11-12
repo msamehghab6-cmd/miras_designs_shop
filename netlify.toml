@@ -1,6 +1,15 @@
+# Mira's Designs — standalone React + Vite site (no pnpm workspace).
+# These settings override the old monorepo build settings in the Netlify UI.
 [build]
   command = "npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
+
+# SPA fallback so direct visits to /shop, /order, etc. load the app.
+# (public/_redirects contains the same rule.)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
